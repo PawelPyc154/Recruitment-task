@@ -3,9 +3,7 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 
 const Companies = React.lazy(() => import('./companies/Companies'));
 
-export interface PagesProps {}
-
-const Pages: React.FC<PagesProps> = () => (
+const Pages: React.FC = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <Switch>
       <Redirect exact from="/" to="/companies" />
