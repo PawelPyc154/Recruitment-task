@@ -1,10 +1,13 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Pages from './pages/Pages';
 
 export interface AppProps {}
 
-function App() {
-  return <div>test</div>;
-}
+const App: React.FC<AppProps> = () => (
+  <Router basename={process.env.PUBLIC_URL}>
+    <Pages />
+  </Router>
+);
 
 export default App;
