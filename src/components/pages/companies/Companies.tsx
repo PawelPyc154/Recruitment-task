@@ -72,7 +72,13 @@ const Companies: React.FC = () => {
                 .filter((item) => item.name.includes(nameInput))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => (
-                  <TableRowStyled onClick={() => handleRedirect(1)} hover role="checkbox" tabIndex={-1} key={row.id}>
+                  <TableRowStyled
+                    onClick={() => handleRedirect(row.id)}
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={row.id}
+                  >
                     {columns.map((column) => (
                       <TableCell key={column.id} align={column.align}>
                         {row[column.id]}
@@ -99,9 +105,8 @@ const Companies: React.FC = () => {
 export default Companies;
 
 const Container = styled.main`
-  width: 100%;
-  height: 100vh;
   padding: 10px;
+  width: 100%;
 `;
 
 const TableContainerStyled = styled(TableContainer)`
