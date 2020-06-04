@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-interface IncomeType {
+export interface IncomeType {
   value: string;
-  date: Date;
+  date: string;
 }
 
 export interface CompanyWithIncomesType {
@@ -11,7 +11,7 @@ export interface CompanyWithIncomesType {
   id: number;
   city: string;
   totalIncome: number;
-  incomes: IncomeType;
+  incomes: IncomeType[];
 }
 export interface CompanyType {
   name: string;
