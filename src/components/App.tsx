@@ -2,11 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import Pages from './pages/Pages';
+import GetCompanies from './context/GetCompanies';
 
 const App: React.FC = () => (
   <Router basename={process.env.PUBLIC_URL}>
-    <Pages />
-    <GlobalStyle />
+    <GetCompanies>
+      <Pages />
+      <GlobalStyle />
+    </GetCompanies>
   </Router>
 );
 
@@ -25,5 +28,6 @@ a {
 }
 body {
   font-family: Roboto, Arial, sans-serif;
+  background-color: #181818;
 }
 `;
