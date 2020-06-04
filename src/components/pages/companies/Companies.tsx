@@ -9,6 +9,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { CompaniesContext } from '../../context/GetCompanies';
 
 interface Column {
@@ -31,12 +32,16 @@ const Companies: React.FC = () => {
   const rowsPerPage = 30;
   const { companies } = useContext(CompaniesContext);
   const [nameInput, setNameInput] = useState('');
+  const history = useHistory();
 
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null, newPage: number) => {
     setPage(newPage);
   };
   const handleChangeSearchByName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNameInput(event.target.value);
+  };
+  const handleRedirect = (id: number) => {
+    history.push(`/companies/${id}`);
   };
 
   return (
@@ -49,6 +54,7 @@ const Companies: React.FC = () => {
           value={nameInput}
           onChange={handleChangeSearchByName}
         />
+
         <TableContainerStyled>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
@@ -66,13 +72,13 @@ const Companies: React.FC = () => {
                 .filter((item) => item.name.includes(nameInput))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                  <TableRowStyled onClick={() => handleRedirect(1)} hover role="checkbox" tabIndex={-1} key={row.id}>
                     {columns.map((column) => (
                       <TableCell key={column.id} align={column.align}>
                         {row[column.id]}
                       </TableCell>
                     ))}
-                  </TableRow>
+                  </TableRowStyled>
                 ))}
             </TableBody>
           </Table>
@@ -102,5 +108,11 @@ const TableContainerStyled = styled(TableContainer)`
   &.MuiTableContainer-root {
     height: calc(100vh - 120px);
     overflow-y: scroll;
+  }
+`;
+const TableRowStyled = styled(TableRow)`
+  cursor: pointer;
+  &:hover {
+    background-color: gray !important;
   }
 `;
