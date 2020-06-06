@@ -32,6 +32,8 @@
     "no-confusing-arrow": "off",
     "react/jsx-curly-newline": "off",
     "max-len": ["error", { "code": 120 }],
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "import/no-cycle": "off"
   }
 }
