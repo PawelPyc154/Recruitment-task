@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import sumIncome from '../../utils/sumIncome';
 
 export interface IncomeType {
   value: string;
   date: string;
 }
-
 export interface CompanyWithIncomesType {
   name: string;
   id: number;
@@ -34,10 +34,10 @@ const GetCompanies: React.FC = ({ children }) => {
       const CompaniesWithIncomes = await resCompanies.data.reduce(
         async (previousValue: CompanyType[], currentValue: CompanyType) => {
           const resIncomes = await axios.get(`https://recruitment.hal.skygate.io/incomes/${currentValue.id}`);
-          const totalIncome = resIncomes.data.incomes
-            .reduce((a: number, b: IncomeType) => a + Number(b.value), 0)
-            .toFixed(2);
-          return [...(await previousValue), { ...currentValue, incomes: resIncomes.data.incomes, totalIncome }];
+          return [
+            ...(await previousValue),
+            { ...currentValue, incomes: resIncomes.data.incomes, totalIncome: sumIncome(resIncomes.data.incomes) },
+          ];
         },
         [],
       );
