@@ -36,7 +36,11 @@ const GetCompanies: React.FC = ({ children }) => {
           const resIncomes = await axios.get(`https://recruitment.hal.skygate.io/incomes/${currentValue.id}`);
           return [
             ...(await previousValue),
-            { ...currentValue, incomes: resIncomes.data.incomes, totalIncome: sumIncome(resIncomes.data.incomes) },
+            {
+              ...currentValue,
+              incomes: resIncomes.data.incomes,
+              totalIncome: sumIncome(resIncomes.data.incomes).toFixed(2),
+            },
           ];
         },
         [],
