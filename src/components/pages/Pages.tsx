@@ -6,7 +6,7 @@ const Companies = React.lazy(() => import('./companies/Companies'));
 const CompanyView = React.lazy(() => import('./companyView/CompanyView'));
 
 const Pages: React.FC = () => (
-  <Suspense fallback={<Loader height="100vh" />}>
+  <Suspense fallback={<Loader />}>
     <Switch>
       <Redirect exact from="/" to="/companies" />
       <Route exact path="/companies" component={Companies} />

@@ -2,25 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { CircularProgress } from '@material-ui/core';
 
-export interface LoaderProps {
-  height?: string;
-}
-
-const Loader: React.FC<LoaderProps> = ({ height }) => (
-  <Container height={height}>
-    <CircularProgressStyled />
-  </Container>
-);
+const Loader: React.FC = () => <CircularProgressStyled />;
 export default Loader;
 
-const Container = styled.div<LoaderProps>`
-  width: 100%;
-  height: ${({ height }) => height || '100%'};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 const CircularProgressStyled = styled(CircularProgress)`
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
   &.MuiCircularProgress-colorPrimary {
     color: #3498db;
   }
