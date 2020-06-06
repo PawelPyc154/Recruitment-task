@@ -46,8 +46,6 @@ export default Companies;
 const Container = styled.main`
   padding: 5px;
   width: 100%;
-  && .MuiToolbar-root {
-  }
   && .MuiTypography-colorInherit {
     color: white;
   }
@@ -62,14 +60,16 @@ const TableContainerStyled = styled(TableContainer)`
   &.MuiTableContainer-root {
     height: calc(100vh - 120px);
     overflow-y: scroll;
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-    &::-webkit-scrollbar-track {
-      background: #202020;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: grey;
+    @media screen and (min-width: 500px) {
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #202020;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: grey;
+      }
     }
   }
 `;
