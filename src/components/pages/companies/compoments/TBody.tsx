@@ -21,7 +21,13 @@ const TBody: React.FC<TBodyProps> = ({ nameInput, page, rowsPerPage }) => {
 
   return (
     <TableBodyStyled>
-      {companies.length === 0 && <Loader />}
+      {companies.length === 0 && (
+        <tr>
+          <td>
+            <Loader />
+          </td>
+        </tr>
+      )}
       {companies
         .sort((a, b) => b.totalIncome - a.totalIncome)
         .filter((item) => item.name.includes(nameInput))
