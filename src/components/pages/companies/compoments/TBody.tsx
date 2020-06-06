@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { columns } from '../utils/columns';
 import { CompaniesContext } from '../../../context/GetCompanies';
+import Loader from '../../Loader';
 
 export interface TBodyProps {
   nameInput: string;
@@ -19,7 +20,8 @@ const TBody: React.FC<TBodyProps> = ({ nameInput, page, rowsPerPage }) => {
   };
 
   return (
-    <TableBody>
+    <TableBodyStyled>
+      {companies.length === 0 && <Loader />}
       {companies
         .sort((a, b) => b.totalIncome - a.totalIncome)
         .filter((item) => item.name.includes(nameInput))
@@ -33,7 +35,7 @@ const TBody: React.FC<TBodyProps> = ({ nameInput, page, rowsPerPage }) => {
             ))}
           </TableRowStyled>
         ))}
-    </TableBody>
+    </TableBodyStyled>
   );
 };
 
@@ -50,4 +52,7 @@ const TableCellStyled = styled(TableCell)`
     color: white;
     border-color: #313131;
   }
+`;
+const TableBodyStyled = styled(TableBody)`
+  position: relative;
 `;
