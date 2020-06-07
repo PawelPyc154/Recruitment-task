@@ -5,15 +5,20 @@ import styled from 'styled-components';
 import { CompaniesContext } from '../../context/GetCompanies';
 import CompanyContent from './components/CompanyContent';
 import Loader from '../Loader';
+import Error from '../Error';
 
 const CompanyView: React.FC = () => {
-  const { companies } = useContext(CompaniesContext);
+  const { error, companies } = useContext(CompaniesContext);
   const { id } = useParams();
   const company = companies.find((item) => item.id === +id);
 
   return (
     <Container>
-      <PaperStyled>{company ? <CompanyContent company={company} /> : <Loader />}</PaperStyled>
+      <PaperStyled>
+        {error && <Error />}
+        {!error && !company && <Loader />}
+        {!error && company && <CompanyContent company={company} />}
+      </PaperStyled>
     </Container>
   );
 };

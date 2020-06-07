@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { columns } from '../utils/columns';
 import { CompaniesContext } from '../../../context/GetCompanies';
 import Loader from '../../Loader';
+import Error from '../../Error';
 
 export interface TBodyProps {
   nameInput: string;
@@ -13,7 +14,7 @@ export interface TBodyProps {
 }
 
 const TBody: React.FC<TBodyProps> = ({ nameInput, page, rowsPerPage }) => {
-  const { companies } = useContext(CompaniesContext);
+  const { error, companies } = useContext(CompaniesContext);
   const history = useHistory();
   const handleRedirect = (id: number) => {
     history.push(`/companies/${id}`);
@@ -21,10 +22,17 @@ const TBody: React.FC<TBodyProps> = ({ nameInput, page, rowsPerPage }) => {
 
   return (
     <TableBodyStyled>
-      {companies.length === 0 && (
+      {companies.length === 0 && !error && (
         <tr>
           <td>
             <Loader />
+          </td>
+        </tr>
+      )}
+      {error && (
+        <tr>
+          <td>
+            <Error />
           </td>
         </tr>
       )}

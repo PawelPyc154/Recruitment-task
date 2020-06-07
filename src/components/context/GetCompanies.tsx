@@ -22,11 +22,13 @@ export interface CompanyType {
 export const CompaniesContext = createContext(
   {} as {
     companies: CompanyWithIncomesType[];
+    error: string;
   },
 );
 
 const GetCompanies: React.FC = ({ children }) => {
   const [companies, setCompanies] = useState<CompanyWithIncomesType[]>([]);
+  const [error, setError] = useState('');
 
   const getCompaniesWithIncomes = async () => {
     try {
@@ -47,7 +49,7 @@ const GetCompanies: React.FC = ({ children }) => {
       );
       setCompanies(CompaniesWithIncomes);
     } catch (err) {
-      console.log(err);
+      setError(err.response?.data);
     }
   };
 
@@ -55,7 +57,7 @@ const GetCompanies: React.FC = ({ children }) => {
     getCompaniesWithIncomes();
   }, []);
 
-  return <CompaniesContext.Provider value={{ companies }}>{children}</CompaniesContext.Provider>;
+  return <CompaniesContext.Provider value={{ companies, error }}>{children}</CompaniesContext.Provider>;
 };
 
 export default GetCompanies;
