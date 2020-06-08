@@ -58,7 +58,7 @@ const Container = styled.main`
 `;
 const TableContainerStyled = styled(TableContainer)`
   &.MuiTableContainer-root {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 105px);
     overflow-y: scroll;
     @media screen and (min-width: 500px) {
       &::-webkit-scrollbar {
