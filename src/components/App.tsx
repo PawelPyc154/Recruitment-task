@@ -1,16 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
 import Pages from './pages/Pages';
 import GetCompanies from './context/GetCompanies';
+import ColorVariable from './context/ColorVariable';
+import { createGlobalStyle } from '../utils/styled-components';
 
 const App: React.FC = () => (
-  <Router basename={process.env.PUBLIC_URL}>
-    <GetCompanies>
-      <Pages />
-      <GlobalStyle />
-    </GetCompanies>
-  </Router>
+  <ColorVariable>
+    <Router basename={process.env.PUBLIC_URL}>
+      <GetCompanies>
+        <Pages />
+        <GlobalStyle />
+      </GetCompanies>
+    </Router>
+  </ColorVariable>
 );
 
 export default App;
@@ -28,6 +31,6 @@ a {
 }
 body {
   font-family: Roboto, Arial, sans-serif;
-  background-color: #181818;
+  background-color: ${(props) => props.theme.backgroundPrimary};
 }
 `;

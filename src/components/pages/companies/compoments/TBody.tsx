@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 import { columns } from '../utils/columns';
 import { CompaniesContext } from '../../../context/GetCompanies';
 import Loader from '../../Loader';
 import Error from '../../Error';
+import styled from '../../../../utils/styled-components';
 
 export interface TBodyProps {
   nameInput: string;
@@ -58,13 +58,13 @@ export default TBody;
 const TableRowStyled = styled(TableRow)`
   cursor: pointer;
   &:hover {
-    background-color: #313131 !important;
+    background-color: ${({ theme }) => theme.tableRow} !important;
   }
 `;
 const TableCellStyled = styled(TableCell)`
   &.MuiTableCell-root {
-    color: white;
-    border-color: #313131;
+    color: ${({ theme }) => theme.textPrimary};
+    border-color: ${({ theme }) => theme.border};
   }
 `;
 const TableBodyStyled = styled(TableBody)`

@@ -1,7 +1,7 @@
 import Slider from '@material-ui/core/Slider';
 import React, { ChangeEvent } from 'react';
-import styled from 'styled-components';
 import SliderLabel from './SliderLabel';
+import styled from '../../../../utils/styled-components';
 
 export interface FilterByDateProps {
   firstDate: number;
@@ -48,7 +48,7 @@ const SliderStyled = styled(Slider)`
   && .MuiSlider-thumb {
     height: 20px;
     width: 20px;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.slider.thumb};
     margin-top: -10px;
     margin-left: -10px;
   }
@@ -57,20 +57,20 @@ const SliderStyled = styled(Slider)`
     top: -22px;
     & * {
       background: transparent;
-      color: #000;
+      color: ${({ theme }) => theme.slider.vertical};
     }
   }
   && .MuiSlider-track {
     height: 2px;
-    background-color: #3498db;
+    background-color: ${({ theme }) => theme.slider.track};
   }
   && .MuiSlider-rail {
     height: 2px;
     opacity: 0.5;
-    background-color: #bfbfbf;
+    background-color: ${({ theme }) => theme.slider.rail};
   }
   && .MuiSlider-mark {
-    background-color: #bfbfbf;
+    background-color: ${({ theme }) => theme.slider.mark};
     height: 8px;
     width: 1px;
     margin-top: -3px;
@@ -80,10 +80,10 @@ const SliderStyled = styled(Slider)`
   }
   && .MuiSlider-markActive {
     opacity: 1;
-    background-color: currentColor;
+    background-color: ${({ theme }) => theme.slider.markActive};
   }
   && .MuiSlider-markLabel {
-    color: #3498db;
+    color: ${({ theme }) => theme.slider.markLabel};
     font-size: 10px;
     @media (min-width: 960px) {
       font-size: 12px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '../../utils/styled-components';
 
 export interface ErrorProps {}
 
@@ -11,5 +11,5 @@ const Container = styled.div`
   position: absolute;
   top: calc(50% - 25px);
   left: calc(50% - 83px);
-  color: red;
+  color: ${(props) => props.theme.error};
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '../../../../utils/styled-components';
 
 export interface FilterByNameProps {
   setNameInput: React.Dispatch<React.SetStateAction<string>>;
@@ -21,11 +21,11 @@ const Input = styled.input`
   height: 40px;
   border: none;
   background-color: #202020;
-  color: white;
+  color: ${({ theme }) => theme.textPrimary};
   font-size: 20px;
   padding: 10px;
   &:focus {
-    border: 1px solid white;
+    border: 1px solid ${({ theme }) => theme.borderInputBorderFocus};
     outline: none;
   }
 `;

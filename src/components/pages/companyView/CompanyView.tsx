@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Paper } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
 import { CompaniesContext } from '../../context/GetCompanies';
 import CompanyContent from './components/CompanyContent';
 import Loader from '../Loader';
 import Error from '../Error';
+import styled from '../../../utils/styled-components';
 
 const CompanyView: React.FC = () => {
   const { error, companies } = useContext(CompaniesContext);
@@ -34,9 +34,9 @@ const PaperStyled = styled(Paper)`
   flex-direction: column;
   justify-content: center;
   &.MuiPaper-root {
-    background-color: #252525;
-    border: 1px solid #313131;
-    color: white;
+    background-color: ${({ theme }) => theme.backgroundSecondary};
+    border: 1px solid ${({ theme }) => theme.border};
+    color: ${({ theme }) => theme.textPrimary};
     padding: 10px;
   }
 `;

@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { TiLocation } from 'react-icons/ti';
 import { CompanyWithIncomesType } from '../../../context/GetCompanies';
 import Incomes from './Incomes';
+import styled from '../../../../utils/styled-components';
 
 export interface CompanyContentProps {
   company: CompanyWithIncomesType;
@@ -25,7 +25,7 @@ const CompanyContent: React.FC<CompanyContentProps> = ({ company }) => (
 export default CompanyContent;
 
 const Header = styled.header`
-  border-bottom: 1px solid #313131;
+  border-bottom: 1px solid ${({ theme }) => theme.border};
 `;
 const H1 = styled.h1`
   text-align: center;
@@ -37,7 +37,7 @@ const LocationWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: gray;
+  color: ${({ theme }) => theme.textSecondary};
   margin-bottom: 10px;
 `;
 const TiLocationIcone = styled(TiLocation)`

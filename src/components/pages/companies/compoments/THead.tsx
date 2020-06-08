@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableHead, TableRow, TableCell } from '@material-ui/core';
-import styled from 'styled-components';
 import { columns } from '../utils/columns';
+import styled from '../../../../utils/styled-components';
 
 const THead: React.FC = () => (
   <TableHead>
@@ -19,8 +19,8 @@ export default THead;
 
 const TableCellStyled = styled(TableCell)`
   &.MuiTableCell-root {
-    background-color: #313131;
-    color: white;
-    border-color: #313131;
+    background-color: ${({ theme }) => theme.tableRow};
+    color: ${({ theme }) => theme.textPrimary};
+    border-color: ${({ theme }) => theme.border};
   }
 `;
