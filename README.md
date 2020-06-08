@@ -12,7 +12,7 @@ You can check it out live [Demo](https://pawelpyc154.github.io/Recruitment-task)
 
 ### Installing
 
-Use npm to install the Recruitment-task.
+Install the dependencies in the local node_modules folder.
 
 ```
 npm install
